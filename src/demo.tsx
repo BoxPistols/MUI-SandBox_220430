@@ -1,33 +1,33 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+import * as React from 'react'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
 // Create Theme Object
-import { createTheme } from "@mui/material/styles";
-import { ThemeProvider } from "@mui/material/styles";
+import { createTheme } from '@mui/material/styles'
+import { ThemeProvider } from '@mui/material/styles'
 
 // Create Theme Object
 const theme = createTheme({
   typography: {
     /* Test origin */
-    origin: {
-      fontStyle: "italic",
-      fontWeight: "600"
-    },
+    // origin: {
+    //   fontStyle: "italic",
+    //   fontWeight: "600"
+    // },
     body1: {
-      color: "teal"
-    }
-  }
-});
+      color: 'teal',
+    },
+  },
+})
 
 export default function Types() {
   return (
     // Create Theme Object
     <ThemeProvider theme={theme}>
-      <Box sx={{ width: "100%", maxWidth: 500 }}>
+      <Box sx={{ width: '100%', maxWidth: 500 }}>
         {/* Test origin */}
-        <Typography variant="origin" component="div" gutterBottom>
+        {/* <Typography variant="origin" component="div" gutterBottom>
           italic
-        </Typography>
+        </Typography> */}
         <Typography variant="h1" component="div" gutterBottom>
           h1. Heading
         </Typography>
@@ -77,5 +77,5 @@ export default function Types() {
         </Typography>
       </Box>
     </ThemeProvider>
-  );
+  )
 }
