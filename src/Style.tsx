@@ -11,8 +11,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function StyleWrap({
   children,
-}: // rightSide,
-{
+}: {
   children: React.ReactNode
   // rightSide: React.ReactNode
 }) {
@@ -22,10 +21,6 @@ export default function StyleWrap({
         <Grid item xs={8}>
           <Item>{children}</Item>
         </Grid>
-
-        {/* <Grid item xs={4}>
-          <Item>{rightSide}</Item>
-        </Grid> */}
 
         <Grid item xs={4}>
           {/* <Item>{rightSide}</Item> */}

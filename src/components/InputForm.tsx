@@ -79,9 +79,7 @@ const OriginTextField = styled(TextField)(({ theme }) => ({
   '& .Mui-focused': {
     // color: theme.palette.secondary.main,
     // color: alpha(theme.palette.text.primary, 0.5),
-
     // borderWidth: '1px',
-
     // '&.MuiFormHelperText-root': {
     //   color: `${alpha(theme.palette.primary.main, 1)}`,
     //   fontSize: '13px',
@@ -148,7 +146,6 @@ export default function InputForm(props: Props) {
 
 // Example @see: https://zenn.dev/ogakuzuko/articles/react-typescript-for-beginner
 /*
-=======
 import React from 'react'
 
 type Props = {
