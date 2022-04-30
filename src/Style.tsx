@@ -11,13 +11,10 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function StyleWrap({
   children,
-//   rightSide,
-}: {
+}: // rightSide,
+{
   children: React.ReactNode
-//   rightSide: React.ReactNode
-}: {
-  children: React.ReactNode
-//   rightSide: React.ReactNode
+  // rightSide: React.ReactNode
 }) {
   return (
     <Box sx={{}}>
@@ -31,7 +28,7 @@ export default function StyleWrap({
         </Grid> */}
 
         <Grid item xs={4}>
-          <Item>{rightSide}</Item>
+          {/* <Item>{rightSide}</Item> */}
         </Grid>
       </Grid>
     </Box>
