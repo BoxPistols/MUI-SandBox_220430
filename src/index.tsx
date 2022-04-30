@@ -9,7 +9,8 @@ import Demo from './Typography'
 import CustomTypo from './CustomTypo'
 import SandBox from './SandBox'
 
-
+// After
+import { createRoot } from 'react-dom/client'
 const container = document.getElementById('root')
 
 if ( container ) {
@@ -18,6 +19,7 @@ if ( container ) {
     <StyleWrap>
       <SandBox/>
       <hr />
+    <StyleWrap rightSide="">
       <CustomForm />
       <hr />
       <Form />
@@ -28,6 +30,7 @@ if ( container ) {
     </StyleWrap>
   </StyledEngineProvider>);
 }
+      
 // before
 // ReactDOM.render(
 //   <StyledEngineProvider injectFirst>

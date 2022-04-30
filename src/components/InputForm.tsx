@@ -148,6 +148,19 @@ export default function InputForm(props: Props) {
 
 // Example @see: https://zenn.dev/ogakuzuko/articles/react-typescript-for-beginner
 /*
+=======
+import React from 'react'
+
+type Props = {
+  formStyle: string
+}
+
+export default function InputForm(props: Props) {
+  return <div>{props.formStyle}</div>
+}
+
+// Example @see: https://zenn.dev/ogakuzuko/articles/react-typescript-for-beginner
+
 // ③ props に直接型注釈を指定するパターン
 const SampleComponent3 = (props: Props) => {
   return <div>Hello {props.formStyle}!</div>
