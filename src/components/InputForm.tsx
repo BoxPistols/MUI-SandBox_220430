@@ -6,8 +6,8 @@ import InputLabel from '@mui/material/InputLabel'
 import FormControl from '@mui/material/FormControl'
 // import InputBase from '@mui/material/InputBase'
 // import { OutlinedInputProps } from '@mui/material/OutlinedInput'
-// import Box from '@mui/material/Box'
-// import Typography from '@mui/material/Typography'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
 
 type Props = {
   // formStyle: string
@@ -17,6 +17,7 @@ type Props = {
   labelTitle?: string
   placeholder?: string
   helperText?: string
+  icon?: any
   size?: 'small' | 'medium' | undefined
 }
 
@@ -122,9 +123,11 @@ export default function InputForm(props: Props) {
 
         {/* <InputLabel htmlFor={props.id} shrink sx={{}}> */}
         <OriginLabel htmlFor={props.id} shrink sx={{}}>
-          {props.labelTitle}
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
+            <Box sx={{ margin: '0 4px 8px 0' }}>{props.labelTitle}</Box>
+            <Box sx={{ margin: '-4px 0 0px 0' }}>{props.icon}</Box>
+          </Box>
         </OriginLabel>
-
         {/* xxx */}
         <OriginTextField
           onChange={handleChange}
