@@ -1,6 +1,8 @@
 import * as React from 'react'
 // import ReactDOM from 'react-dom'
 import { StyledEngineProvider } from '@mui/material/styles'
+import Form from './Form'
+import CustomForm from './CustomForm'
 import Demo from './Typography'
 import CustomTypo from './CustomTypo'
 
@@ -21,6 +23,10 @@ const container = document.getElementById('root')
 const root = createRoot(container) // createRoot(container!) if you use TypeScript
 root.render(
   <StyledEngineProvider injectFirst>
+    <CustomForm />
+    <hr />
+    <Form />
+    <hr />
     <CustomTypo />
     <hr />
     <Demo />

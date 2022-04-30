@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography'
 import { createTheme } from '@mui/material/styles'
 import { ThemeProvider } from '@mui/material/styles'
 
+// 追加
 // Create Theme Object
 const theme = createTheme({
   typography: {
@@ -13,6 +14,24 @@ const theme = createTheme({
     //   fontStyle: "italic",
     //   fontWeight: "600"
     // },
+    h1: {
+      fontSize: 32,
+    },
+    h2: {
+      fontSize: 24,
+    },
+    h3: {
+      fontSize: 20,
+    },
+    h4: {
+      fontSize: 16,
+    },
+    h5: {
+      fontSize: 15,
+    },
+    h6: {
+      fontSize: 14,
+    },
     body1: {
       color: 'teal',
     },
