@@ -28,26 +28,23 @@ import Typography from '@mui/material/Typography'
 //   },
 // })
 
-const BootstrapInput = styled(InputBase)(({ theme }) => ({
-  label: {
-    fontSize: 16,
-  },
+const CustomInput = styled(InputBase)(({ theme }) => ({
   'label + &': {
     marginTop: theme.spacing(2.4),
   },
   '& .MuiInputBase-input': {
     borderRadius: 4,
-    position: 'relative',
-    // backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2b2b2b',
     border: '1px solid #ced4da',
     fontSize: 16,
     width: 'auto',
-    padding: '10px 12px',
-    // transition: theme.transitions.create([
-    // 'border-color',
-    // 'background-color',
-    // 'box-shadow',
-    // ]),
+    padding: '8px 10px 6px',
+    // position: 'relative',
+    // backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2b2b2b',
+    transition: theme.transitions.create([
+      'border-color',
+      // 'background-color',
+      // 'box-shadow',
+    ]),
     // Use the system font instead of the default Roboto font.
     '&:focus': {
       // boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 0.2rem`,
@@ -56,32 +53,51 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
   },
 }))
 
-// const RedditTextField = styled((props: TextFieldProps) => (
-//   <TextField
-//     InputProps={{ disableUnderline: true } as Partial<OutlinedInputProps>}
-//     {...props}
-//   />
-// ))(({ theme }) => ({
-//   '& .MuiFilledInput-root': {
-//     border: '1px solid #e2e2e1',
-//     overflow: 'hidden',
-//     borderRadius: 4,
-//     backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2b2b2b',
-//     transition: theme.transitions.create([
-//       'border-color',
-//       'background-color',
-//       'box-shadow',
-//     ]),
-//     '&:hover': {
-//       backgroundColor: 'transparent',
-//     },
-//     '&.Mui-focused': {
-//       backgroundColor: 'transparent',
-//       boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 2px`,
-//       borderColor: theme.palette.primary.main,
-//     },
-//   },
-// }))
+const RedditTextField = styled((props: TextFieldProps) => (
+  <TextField
+    InputProps={{ disableUnderline: true } as Partial<OutlinedInputProps>}
+    {...props}
+    helperText="Please enter your name"
+  />
+))(({ theme }) => ({
+  '& .MuiFormLabel-root': {
+    color: 'teal',
+    position: 'initial',
+    fontSize: '1rem',
+    transform: 'null',
+    '&.Mui-focused': {
+      color: 'red',
+    },
+    '&.MuiInputLabel-animated': {
+      color: 'blue',
+    },
+  },
+  '& .MuiInputBase-input, .MuiFilledInput-input': {
+    padding: '0.5em',
+    height: '1rem',
+  },
+  '& .MuiFilledInput-root': {
+    border: '1px solid #e2e2e1',
+    overflow: 'hidden',
+    borderRadius: 4,
+    backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2b2b2b',
+    // transition: theme.transitions.create([
+    //   'border-color',
+    //   'background-color',
+    //   'box-shadow',
+    // ]),
+    '&:hover': {
+      backgroundColor: 'transparent',
+    },
+    '&.Mui-focused': {
+      position: 'initial',
+      backgroundColor: 'transparent',
+      boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 2px`,
+      borderColor: theme.palette.primary.main,
+      transform: 'null',
+    },
+  },
+}))
 
 // const ValidationTextField = styled(TextField)({
 //   '& input:valid + fieldset': {
@@ -115,20 +131,32 @@ export default function CustomizedInputs() {
           gap: 2,
         }}
       >
+        {/* Custom Form */}
         <FormControl variant="standard">
-          <InputLabel shrink htmlFor="input">
-            Label
+          <InputLabel htmlFor="custom-input" shrink>
+            <Typography variant="body1">Custom Form</Typography>
           </InputLabel>
-          <BootstrapInput defaultValue="react-bootstrap" id="input" />
+          <CustomInput
+            id="custom-input"
+            placeholder="Placeholder"
+            // defaultValue="defaultValue"
+          />
         </FormControl>
-        {/* 
+        {/* Field */}
         <RedditTextField
           label="Reddit"
-          defaultValue="react-reddit"
+          // defaultValue="react-reddit"
+          placeholder="react-reddit"
           id="reddit-input"
           variant="filled"
           style={{ marginTop: 11 }}
         />
+        <TextField
+          helperText="Please enter your name"
+          id="demo-helper"
+          label="Name"
+        />
+        {/* 
 
         <CssTextField label="Custom CSS" id="custom-css-outlined-input" />
         <ValidationTextField
