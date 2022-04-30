@@ -58,10 +58,11 @@ export default function CustomizedInputs() {
           <InputLabel
             htmlFor="custom-input"
             shrink
-            sx={{ margin: '-24px 0 0 0' }}
+            sx={{ margin: '-20px 0 0 0' }}
           >
-            <Typography variant="body1">Custom Form</Typography>
+            <Typography variant="body1">Name Custom Form</Typography>
           </InputLabel>
+
           {/* <CustomInput
             id="custom-input"
             placeholder="Placeholder"
@@ -70,9 +71,10 @@ export default function CustomizedInputs() {
           {/* xxx */}
           <TextField
             id="custom-input"
-            label="Name"
+            // label="Name"
             value={name}
             onChange={handleChange}
+            helperText="Please enter your name"
           />
         </FormControl>
         {name}
