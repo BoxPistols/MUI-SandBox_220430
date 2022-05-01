@@ -8,6 +8,7 @@ import FormControl from '@mui/material/FormControl'
 // import { OutlinedInputProps } from '@mui/material/OutlinedInput'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
+import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip'
 
 type Props = {
   // formStyle: string
@@ -19,6 +20,9 @@ type Props = {
   helperText?: string
   icon?: any
   size?: 'small' | 'medium' | undefined
+  tooltip?: boolean
+  tooltipTitle?: any
+  placement?: TooltipProps['placement']
 }
 
 // テーマ
@@ -120,19 +124,50 @@ export default function InputForm(props: Props) {
       <FormControl variant="standard" sx={{ margin: '24px 0 12px 0' }}>
         {/* ラベル */}
         {/* <InputLabel htmlFor={props.htmlFor} shrink sx={{}}> */}
-
         {/* <InputLabel htmlFor={props.id} shrink sx={{}}> */}
         <OriginLabel htmlFor={props.id} shrink sx={{}}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
             <Box sx={{ margin: '0 4px 8px 0' }}>{props.labelTitle}</Box>
-            <Box sx={{ margin: '-4px 0 0px 0' }}>{props.icon}</Box>
+            {/* Tip */}
+            {props.tooltip ? (
+              <Tooltip
+                title={props.tooltipTitle}
+                placement={props.placement ? props.placement : 'top-end'}
+                arrow
+              >
+                <Box
+                  sx={{
+                    margin: '-2px 0 0 0',
+                    width: 'fit-content',
+                    height: 'fit-content',
+                  }}
+                >
+                  {props.icon}
+                </Box>
+              </Tooltip>
+            ) : (
+              <Box sx={{ margin: '-4px 0 0px 0' }}>{props.icon}</Box>
+            )}
+            {/*
+            <Tooltip title="あああ" arrow placement="right-start">
+              <Box
+                sx={{
+                  margin: '-4px 0 0px 0',
+                  width: 'fit-content',
+                  height: 'fit-content',
+                }}
+              >
+                {props.icon}
+              </Box>
+            </Tooltip>
+                */}
           </Box>
         </OriginLabel>
         {/* xxx */}
         <OriginTextField
           onChange={handleChange}
           value={name}
-          defaultValue={name}
+          // defaultValue={name}
           id={props.id}
           label={props.inLabelName}
           placeholder={
