@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import InputForm from './components/InputForm'
 import Box from '@mui/material/Box'
 import DraftsIcon from '@mui/icons-material/Drafts'
@@ -12,6 +12,12 @@ Nullam eget est sed sem iaculis gravida eget vitae justo.
 `
 
 export default function SandBox() {
+  const [name, setName] = React.useState('useState Value')
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setName(event.target.value)
+  }
+  // console.log(name);
+
   return (
     <div>
       {/* <Tooltip title={longText} placement="right-start"> */}
@@ -35,9 +41,11 @@ export default function SandBox() {
           icon={<InfoOutlinedIcon />}
           tooltip
           tooltipTitle={longText}
+          placeholder="プレースです"
           // helperText="補足ヘルパーです"
+          onChangeValue={handleChange}
+          value={name}
         />
-
         <InputForm
           labelTitle="テストラベル日本語"
           inLabelName="動くラベル"
@@ -48,7 +56,6 @@ export default function SandBox() {
           helperText="補足ヘルパーです"
           // placement="top-end"
         />
-
         <InputForm
           id="sf2"
           labelTitle="medium"

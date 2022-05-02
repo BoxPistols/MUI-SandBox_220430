@@ -8,7 +8,7 @@ import FormControl from '@mui/material/FormControl'
 // import { OutlinedInputProps } from '@mui/material/OutlinedInput'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
-import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip'
+import Tooltip, { TooltipProps } from '@mui/material/Tooltip'
 
 type Props = {
   // formStyle: string
@@ -18,18 +18,21 @@ type Props = {
   labelTitle?: string
   placeholder?: string
   helperText?: string
-  icon?: any
   size?: 'small' | 'medium' | undefined
   tooltip?: boolean
-  tooltipTitle?: any
   placement?: TooltipProps['placement']
+  value?: string
+  // TODO: 型付け
+  icon?: any
+  tooltipTitle?: any
+  onChangeValue?: any
 }
 
 // テーマ
 const theme = createTheme({
   palette: {
     neutral: {
-      main: 'rgba(0, 10, 30, 0.8',
+      main: 'rgba(0, 10, 30, 0.8)',
       contrastText: '#fff',
     },
   },
@@ -113,10 +116,10 @@ const OriginTextField = styled(TextField)(({ theme }) => ({
 }))
 
 export default function InputForm(props: Props) {
-  const [name, setName] = React.useState('useState Value')
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setName(event.target.value)
-  }
+  // const [name, setName] = React.useState('useState Value')
+  // const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   setName(event.target.value)
+  // }
 
   return (
     <ThemeProvider theme={theme}>
@@ -148,25 +151,13 @@ export default function InputForm(props: Props) {
             ) : (
               <Box sx={{ margin: '-4px 0 0px 0' }}>{props.icon}</Box>
             )}
-            {/*
-            <Tooltip title="あああ" arrow placement="right-start">
-              <Box
-                sx={{
-                  margin: '-4px 0 0px 0',
-                  width: 'fit-content',
-                  height: 'fit-content',
-                }}
-              >
-                {props.icon}
-              </Box>
-            </Tooltip>
-                */}
           </Box>
         </OriginLabel>
         {/* xxx */}
         <OriginTextField
-          onChange={handleChange}
-          value={name}
+          onChange={props.onChangeValue}
+          // value={name}
+          value={props.value}
           // defaultValue={name}
           id={props.id}
           label={props.inLabelName}
