@@ -1,9 +1,11 @@
 import * as React from 'react'
-import InputForm from './components/InputForm'
+import InputForm from 'components/Form/InputForm'
 import Box from '@mui/material/Box'
-import DraftsIcon from '@mui/icons-material/Drafts'
+// import DraftsIcon from '@mui/icons-material/Drafts'
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined'
 import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip'
+
+// import CustomTypo from './CustomTypo'
 
 const longText = `
 Aliquam eget finibus ante, non facilisis lectus. Sed vitae dignissim est, vel aliquam tellus.

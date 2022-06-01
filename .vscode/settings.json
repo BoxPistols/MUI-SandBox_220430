@@ -8,9 +8,5 @@
     "**/Thumbs.db": true,
     "**/node_modules": true
   },
-  "workbench.colorCustomizations": {
-    "activityBar.background": "#0d3268",
-    "titleBar.activeBackground": "#0d3c5f",
-    "titleBar.activeForeground": "#FFFAFE"
-  }
+  "editor.formatOnSave": true
 }

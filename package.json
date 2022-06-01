@@ -8,6 +8,7 @@
     "@types/react-dom": "latest",
     "react": "latest",
     "react-dom": "latest",
+    "react-router-dom": "6",
     "typescript": "latest"
   },
   "description": "https://github.com/mui/material-ui/blob/v5.6.3/docs/data/material/components/typography/TypographyTheme.tsx",
