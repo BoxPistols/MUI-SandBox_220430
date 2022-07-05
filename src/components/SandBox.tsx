@@ -1,5 +1,6 @@
 import * as React from 'react'
 import InputForm from 'components/Form/InputForm'
+import {ReactHookForm} from 'components/Form/ReactHookForm'
 import Box from '@mui/material/Box'
 // import DraftsIcon from '@mui/icons-material/Drafts'
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined'
@@ -23,10 +24,12 @@ export default function SandBox() {
   return (
     <div>
       {/* <Tooltip title={longText} placement="right-start"> */}
-      <Tooltip title={longText} arrow placement="right-start">
+      {/* <Tooltip title={longText} arrow placement="right-start">
         <p>Default Width [300px]</p>
-      </Tooltip>
-      <p>SandBox</p>
+      </Tooltip> */}
+      <h1>SandBox</h1>
+      <ReactHookForm/>
+
       <Box
         component="form"
         noValidate
@@ -47,8 +50,9 @@ export default function SandBox() {
           // helperText="補足ヘルパーです"
           onChangeValue={handleChange}
           value={name}
+          helperText="補足ヘルパーです"
         />
-        <InputForm
+        {/* <InputForm
           labelTitle="テストラベル日本語"
           inLabelName="動くラベル"
           id="sf0"
@@ -64,7 +68,7 @@ export default function SandBox() {
           size="medium"
           // helperText="ヘルパー"
         />
-        <InputForm id="sf3" labelTitle="サイズ無指定" helperText="ヘルパー" />
+        <InputForm id="sf3" labelTitle="サイズ無指定" helperText="ヘルパー" /> */}
       </Box>
     </div>
   )

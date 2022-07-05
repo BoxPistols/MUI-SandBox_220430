@@ -5,7 +5,7 @@ import CustomForm from 'components/Form/CustomForm'
 import InputForm from 'components/Form/InputForm'
 // import CustomTypo from 'components/Form/CustomTypo'
 // import Demo from 'components/Form/Typography'
-// import SandBox from 'components/Form/SandBox'
+import SandBox from 'components/SandBox'
 import ResponsiveDrawer from 'layout/global-drawer'
 /**
  * Router: https://reactrouter.com/docs/en/v6/getting-started/installation#basic-installation
@@ -19,6 +19,7 @@ const Top: React.FC = (): JSX.Element => {
             <Route path="form" element={<Form />} />
             <Route path="custom-form" element={<CustomForm />} />
             <Route path="input-form" element={<InputForm />} />
+            <Route path="sand-box" element={<SandBox />} />
           </>
         }
       </Routes>
@@ -27,9 +28,10 @@ const Top: React.FC = (): JSX.Element => {
         <p>paragraph</p>
         <ResponsiveDrawer />
         <nav>
-          <Link to="form">Typo</Link>
-          <Link to="custom-form">custom-form</Link>
-          <Link to="input-form">input-form</Link>
+          <Link to="form">Typo</Link> /
+          <Link to="custom-form">custom-form</Link> /
+          <Link to="input-form">input-form</Link> /
+          <Link to="sand-box">sand-box</Link>
         </nav>
         {/* </ResponsiveDrawer> */}
       </section>

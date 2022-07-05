@@ -8,6 +8,7 @@
     "@types/react-dom": "latest",
     "react": "latest",
     "react-dom": "latest",
+    "react-hook-form": "^7.33.1",
     "react-router-dom": "6",
     "typescript": "latest"
   },
