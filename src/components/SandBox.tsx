@@ -1,12 +1,13 @@
 import * as React from 'react'
 import InputForm from 'components/Form/InputForm'
-import {ReactHookForm} from 'components/Form/ReactHookForm'
+import { ReactHookForm } from 'components/Form/ReactHookForm'
 import Box from '@mui/material/Box'
 // import DraftsIcon from '@mui/icons-material/Drafts'
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined'
 import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip'
 
 // import CustomTypo from './CustomTypo'
+import { Stack } from '@mui/material'
 
 const longText = `
 Aliquam eget finibus ante, non facilisis lectus. Sed vitae dignissim est, vel aliquam tellus.
@@ -28,31 +29,35 @@ export default function SandBox() {
         <p>Default Width [300px]</p>
       </Tooltip> */}
       <h1>SandBox</h1>
-      <ReactHookForm/>
+      <Stack spacing={3}>
+        <h2>ReactHookForm</h2>
+        <ReactHookForm />
 
-      <Box
-        component="form"
-        noValidate
-        sx={{
-          display: 'grid',
-          gridTemplateColumns: { sm: '1fr 1fr' },
-          gap: 2,
-        }}
-      >
-        <InputForm
-          id="sf1"
-          labelTitle="コンパクト"
-          size="small"
-          icon={<InfoOutlinedIcon />}
-          tooltip
-          tooltipTitle={longText}
-          placeholder="プレースです"
-          // helperText="補足ヘルパーです"
-          onChangeValue={handleChange}
-          value={name}
-          helperText="補足ヘルパーです"
-        />
-        {/* <InputForm
+        <hr />
+        <h2>MUI Form</h2>
+        <Box
+          component="form"
+          noValidate
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: { sm: '1fr 1fr' },
+            gap: 2,
+          }}
+        >
+          <InputForm
+            id="sf1"
+            labelTitle="コンパクト"
+            size="small"
+            icon={<InfoOutlinedIcon />}
+            tooltip
+            tooltipTitle={longText}
+            placeholder="プレースです"
+            // helperText="補足ヘルパーです"
+            onChangeValue={handleChange}
+            value={name}
+            helperText="補足ヘルパーです"
+          />
+          {/* <InputForm
           labelTitle="テストラベル日本語"
           inLabelName="動くラベル"
           id="sf0"
@@ -69,7 +74,8 @@ export default function SandBox() {
           // helperText="ヘルパー"
         />
         <InputForm id="sf3" labelTitle="サイズ無指定" helperText="ヘルパー" /> */}
-      </Box>
+        </Box>
+      </Stack>
     </div>
   )
 }
