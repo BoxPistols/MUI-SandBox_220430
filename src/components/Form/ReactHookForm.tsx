@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Container, Stack, TextField } from '@mui/material'
+import { Button, Container, FormControl, Stack, TextField } from '@mui/material'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
@@ -44,41 +44,50 @@ export const ReactHookForm = () => {
 
   return (
     <>
-      <Container maxWidth="sm" sx={{ pt: 5 }}>
+      <Container maxWidth="sm" sx={{ margin: 'auto', pt: 5 }}>
         <Stack spacing={3}>
-          <TextField
-            required
-            label="メールアドレス"
-            type="email"
-            {...register('email')}
-            error={'email' in errors}
-            helperText={errors.email?.message}
-          />
+          <FormControl>
+            <label>メールアドレス</label>
+            <TextField
+              required
+              type="email"
+              {...register('email')}
+              error={'email' in errors}
+              helperText={errors.email?.message}
+            />
+          </FormControl>
 
-          <TextField
-            required
-            label="お名前"
-            {...register('name')}
-            error={'name' in errors}
-            helperText={errors.name?.message}
-          />
+          <FormControl>
+            <label>お名前</label>
+            <TextField
+              required
+              {...register('name')}
+              error={'name' in errors}
+              helperText={errors.name?.message}
+            />
+          </FormControl>
 
-          <TextField
-            required
-            label="パスワード"
-            type="password"
-            {...register('password')}
-            error={'password' in errors}
-            helperText={errors.password?.message}
-          />
-          <Button
-            color="primary"
-            variant="contained"
-            size="large"
-            onClick={handleSubmit(onSubmit)}
-          >
-            作成
-          </Button>
+          <FormControl>
+            <label>パスワード</label>
+            <TextField
+              required
+              type="password"
+              {...register('password')}
+              error={'password' in errors}
+              helperText={errors.password?.message}
+            />
+          </FormControl>
+
+          <FormControl>
+            <Button
+              color="primary"
+              variant="contained"
+              size="large"
+              onClick={handleSubmit(onSubmit)}
+            >
+              作成
+            </Button>
+          </FormControl>
         </Stack>
       </Container>
     </>
