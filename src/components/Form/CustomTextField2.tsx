@@ -1,5 +1,7 @@
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
+
 import React, { ElementType, FC, ReactNode } from 'react'
+
 import {
   alpha,
   Button,
@@ -22,15 +24,14 @@ type Props = Partial<{
   TooltipTitleIconComponent?: ReactNode
   labelTitle: string
   required: boolean
-  error: boolean
   placeholder: string
   size: 'small' | 'medium' | undefined
-  helperText: string
 
-  value: string
   // TODO: 型付け
-  icon: any
-  tooltipTitle: any
+  error: any
+  // register: Array<any>
+  value: string
+  helperText: any
   onChangeValue: any
 }>
 
@@ -84,46 +85,50 @@ export const CustomTextField2: FC<Props> = ({
   error,
   size,
   placeholder,
+  formType,
+  // register,
+  // othes,
 }) => {
   return (
     <>
-      <Container maxWidth="sm" sx={{ margin: 'auto', pt: 5 }}>
-        <Stack spacing={3}>
-          <FormControl>
-            <CustomLabel shrink htmlFor={id}>
-              {labelTitle}
-              {TooltipTitleIconComponent && (
-                <Tooltip
-                  title={TooltipTitleIconComponent}
-                  arrow
-                  placement="top-start"
-                >
-                  <Button
-                    sx={{
-                      margin: '0 0 .2em 0',
-                      '&.MuiButton-root': {
-                        padding: '6px',
-                        minWidth: 'fit-content',
-                      },
-                    }}
-                  >
-                    <HelpOutlineIcon fontSize="small" />
-                  </Button>
-                </Tooltip>
-              )}
-            </CustomLabel>
-            <CustomInput
-              id={id}
-              required={required}
-              error={error}
-              onChange={onChangeValue}
-              helperText={helperText}
-              size={size}
-              placeholder={placeholder}
-            />
-          </FormControl>
-        </Stack>
-      </Container>
+      {/* <Container sx={{ margin: 'auto', pt: 5 }}> */}
+      {/* <FormControl> */}
+      <CustomLabel shrink htmlFor={id}>
+        {labelTitle}
+        {TooltipTitleIconComponent && (
+          <Tooltip
+            title={TooltipTitleIconComponent}
+            arrow
+            placement="top-start"
+          >
+            <Button
+              sx={{
+                margin: '0 0 .2em 0',
+                '&.MuiButton-root': {
+                  padding: '6px',
+                  minWidth: 'fit-content',
+                },
+              }}
+            >
+              <HelpOutlineIcon fontSize="small" />
+            </Button>
+          </Tooltip>
+        )}
+      </CustomLabel>
+
+      <CustomInput
+        id={id}
+        type={formType}
+        required={required}
+        // onChange={onChangeValue}
+        // helperText={helperText}
+        size={size}
+        placeholder={placeholder}
+        // RFH
+        error={error}
+      />
+      {/* </FormControl> */}
+      {/* </Container> */}
     </>
   )
 }

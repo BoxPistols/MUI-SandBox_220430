@@ -170,10 +170,10 @@ export const ReactHookForm: FC<Props> = ({
               id={id}
               required
               type={formType}
+              placeholder={placeholder}
               {...register('email')}
               error={'email' in errors}
               helperText={errors.email?.message}
-              placeholder={placeholder}
               // size={size ? size : undefined}
               size={size}
             />
