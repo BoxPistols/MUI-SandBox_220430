@@ -48,6 +48,11 @@ const CustomInput = styled(TextField)(({ theme }) => ({
   '.MuiInputBase-input.MuiOutlinedInput-input': {
     padding: '0.8em',
   },
+  '.MuiInputBase-input.MuiOutlinedInput-input.MuiInputBase-inputSizeSmall': {
+    padding: '0.4em 0.6em',
+    fontSize: '14px',
+    height: '1.8em',
+  },
   '& .MuiOutlinedInput-root': {
     '& fieldset': {
       borderColor: theme.palette.primary.main,
@@ -83,9 +88,9 @@ type Props = Partial<{
   labelTitle: string
   required: boolean
   placeholder: string
+  size: 'small' | 'medium' | undefined
   // helperText: string
 
-  size: 'small' | 'medium' | undefined
   // tooltip: boolean
   value: string
   // placement: TooltipProps['placement']
@@ -110,6 +115,7 @@ export const ReactHookForm: FC<Props> = ({
   required,
   formType,
   placeholder,
+  size,
 }) => {
   const {
     register,
@@ -167,6 +173,8 @@ export const ReactHookForm: FC<Props> = ({
               error={'email' in errors}
               helperText={errors.email?.message}
               placeholder={placeholder}
+              // size={size ? size : undefined}
+              size={size}
             />
           </FormControl>
 

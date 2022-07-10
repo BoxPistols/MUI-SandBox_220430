@@ -37,6 +37,7 @@ export default function SandBox() {
           formType="addMail"
           labelTitle="メールアドレス"
           placeholder="入力してください"
+          // size="small"
           TooltipTitleIconComponent={
             <Typography>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem,
