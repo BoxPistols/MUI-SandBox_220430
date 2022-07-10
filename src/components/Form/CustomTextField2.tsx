@@ -22,6 +22,7 @@ type Props = Partial<{
   TooltipTitleIconComponent?: ReactNode
   labelTitle: string
   required: boolean
+  error: boolean
   placeholder: string
   size: 'small' | 'medium' | undefined
   helperText: string
@@ -77,6 +78,11 @@ export const CustomTextField2: FC<Props> = ({
   id,
   labelTitle,
   TooltipTitleIconComponent,
+  onChangeValue,
+  helperText,
+  required,
+  error,
+  size,
 }) => {
   return (
     <>
@@ -105,7 +111,14 @@ export const CustomTextField2: FC<Props> = ({
                 </Tooltip>
               )}
             </CustomLabel>
-            <CustomInput />
+            <CustomInput
+              id={id}
+              required={required}
+              error={error}
+              onChange={onChangeValue}
+              helperText={helperText}
+              size={size}
+            />
           </FormControl>
         </Stack>
       </Container>

@@ -15,22 +15,27 @@ export default function SandBox2() {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value)
   }
-  // console.log(name);
+  console.log(name)
 
   return (
     <>
-      <h1>SandBox</h1>
+      <h1>SandBox-2</h1>
 
       <Stack spacing={1}>
         <h2>CustomTextField2</h2>
 
         <CustomTextField2
+          id="テスト"
           labelTitle="ラベルテスト"
+          onChangeValue={handleChange}
+          value={name}
+          helperText="案内をサポートしますよ"
           TooltipTitleIconComponent={
             <Typography>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem,
               laboriosam?
             </Typography>
+            // size="small"
           }
         />
       </Stack>

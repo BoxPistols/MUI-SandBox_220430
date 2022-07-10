@@ -167,8 +167,8 @@ export const ReactHookForm: FC<Props> = ({
               )}
             </CustomLabel>
             <CustomInput
-              required={required}
               id={id}
+              required
               type={formType}
               {...register('email')}
               error={'email' in errors}
