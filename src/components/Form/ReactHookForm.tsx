@@ -82,9 +82,8 @@ type Props = Partial<{
   TooltipTitleIconComponent?: ReactNode
   labelTitle: string
   required: boolean
-
   placeholder: string
-  helperText: string
+  // helperText: string
 
   size: 'small' | 'medium' | undefined
   // tooltip: boolean
@@ -110,6 +109,7 @@ export const ReactHookForm: FC<Props> = ({
   labelTitle,
   required,
   formType,
+  placeholder,
 }) => {
   const {
     register,
@@ -166,6 +166,7 @@ export const ReactHookForm: FC<Props> = ({
               {...register('email')}
               error={'email' in errors}
               helperText={errors.email?.message}
+              placeholder={placeholder}
             />
           </FormControl>
 
