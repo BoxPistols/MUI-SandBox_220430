@@ -23,6 +23,7 @@ import InputForm from 'components/Form/InputForm'
 import SandBox from 'components/SandBox'
 import SandBox2 from 'components/SandBox2'
 import { Stack } from '@mui/material'
+import { SandReactHookForm } from 'components/Form/SandReactHookForm'
 
 export const drawerWidth = 60
 
@@ -111,6 +112,7 @@ export default function ResponsiveDrawer(props: Props) {
             <Route path="input-form" element={<InputForm />} />
             <Route path="sand-box" element={<SandBox />} />
             <Route path="sand-box2" element={<SandBox2 />} />
+            <Route path="react-hook" element={<SandReactHookForm />} />
           </>
         }
       </Routes>
@@ -153,7 +155,8 @@ export default function ResponsiveDrawer(props: Props) {
               <Link to="custom-form">custom-form</Link> /
               <Link to="input-form">input-form</Link> /
               <Link to="sand-box">sand-box</Link> /
-              <Link to="sand-box2">sand-box2</Link>
+              <Link to="sand-box2">sand-box2</Link> /
+              <Link to="react-hook">react-hook</Link>
             </Stack>
           </nav>
         </Toolbar>

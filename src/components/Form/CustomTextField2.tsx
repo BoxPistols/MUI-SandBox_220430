@@ -83,6 +83,7 @@ export const CustomTextField2: FC<Props> = ({
   required,
   error,
   size,
+  placeholder,
 }) => {
   return (
     <>
@@ -118,6 +119,7 @@ export const CustomTextField2: FC<Props> = ({
               onChange={onChangeValue}
               helperText={helperText}
               size={size}
+              placeholder={placeholder}
             />
           </FormControl>
         </Stack>

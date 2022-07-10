@@ -1,6 +1,6 @@
 import * as React from 'react'
 import InputForm from 'components/Form/InputForm'
-import { ReactHookForm } from 'components/Form/ReactHookForm'
+import { SandReactHookForm } from 'components/Form/SandReactHookForm'
 import { Box, Stack, Typography } from '@mui/material'
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined'
 import { CustomTextField2 } from './Form/CustomTextField2'
@@ -30,6 +30,7 @@ export default function SandBox2() {
           onChangeValue={handleChange}
           value={name}
           helperText="案内をサポートしますよ"
+          placeholder="入力してください"
           TooltipTitleIconComponent={
             <Typography>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem,
