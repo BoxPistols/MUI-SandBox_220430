@@ -1,5 +1,8 @@
-import React from 'react'
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
+
+import React, { ElementType, FC, ReactNode } from 'react'
 import {
+  alpha,
   Button,
   Container,
   FormControl,
@@ -10,32 +13,9 @@ import {
   TextField,
 } from '@mui/material'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
-
-type Props = {
-  id?: string
-  htmlFor?: string
-  inLabelName?: string
-  labelTitle?: string
-  placeholder?: string
-  helperText?: string
-  size?: 'small' | 'medium' | undefined
-  tooltip?: boolean
-  // placement?: TooltipProps['placement']
-  value?: string
-  // TODO: 型付け
-  icon?: any
-  tooltipTitle?: any
-  onChangeValue?: any
-}
-
-// フォームの型
-interface SampleFormInput {
-  email: string
-  name: string
-  password: string
-}
 
 // バリデーションルール
 const schema = yup.object({
@@ -43,16 +23,16 @@ const schema = yup.object({
     .string()
     .required('必須です')
     .email('正しいメールアドレス入力してね'),
-  name: yup.string().required('必須です'),
-  password: yup
-    .string()
-    .required('必須です')
-    .min(6, '6文字以上で入力してください')
-    .matches(
-      // /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&].*$/,
-      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&]).*$/,
-      'パスワードが弱いです。英数字、記号@$!%*#のいずれかを含めてください'
-    ),
+  // name: yup.string().required('必須です'),
+  // password: yup
+  //   .string()
+  //   .required('必須です')
+  //   .min(6, '6文字以上で入力してください')
+  //   .matches(
+  //     // /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&].*$/,
+  //     /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&]).*$/,
+  //     'パスワードが弱いです。英数字、記号@$!%*#のいずれかを含めてください'
+  //   ),
 })
 
 //  Custom Label
@@ -66,11 +46,71 @@ const CustomLabel = styled(InputLabel)(({ theme }) => ({
 //  Custom Input Form
 const CustomInput = styled(TextField)(({ theme }) => ({
   '.MuiInputBase-input.MuiOutlinedInput-input': {
-    padding: '0.85em',
+    padding: '0.8em',
+  },
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: theme.palette.primary.main,
+    },
+    '&:hover fieldset': {
+      borderColor: `${alpha(theme.palette.primary.main, 0.5)}`,
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: `${alpha(theme.palette.primary.main, 1)}`,
+    },
+    // エラー表示
+    '&.Mui-error fieldset': {
+      borderColor: theme.palette.error.main,
+    },
+    '&.Mui-error:hover fieldset': {
+      borderColor: `${alpha(theme.palette.error.main, 0.5)}`,
+    },
+    '&.Mui-focused.Mui-error:hover fieldset': {
+      borderColor: `${alpha(theme.palette.error.main, 1)}`,
+    },
   },
 }))
 
-export const ReactHookForm = () => {
+// ToolTip
+
+// Types
+type Props = Partial<{
+  // children: ReactNode
+  id: string
+  htmlFor: string
+  formType: string
+  TooltipTitleIconComponent?: ReactNode
+  labelTitle: string
+  required: boolean
+
+  placeholder: string
+  helperText: string
+
+  size: 'small' | 'medium' | undefined
+  // tooltip: boolean
+  value: string
+  // placement: TooltipProps['placement']
+  // TODO: 型付け
+  icon: any
+  tooltipTitle: any
+  onChangeValue: any
+}>
+
+// フォームの型
+interface SampleFormInput {
+  email: string
+  name: string
+  password: string
+}
+
+export const ReactHookForm: FC<Props> = ({
+  id,
+  // children,
+  TooltipTitleIconComponent,
+  labelTitle,
+  required,
+  formType,
+}) => {
   const {
     register,
     handleSubmit,
@@ -78,6 +118,13 @@ export const ReactHookForm = () => {
   } = useForm<SampleFormInput>({
     resolver: yupResolver(schema),
   })
+  /**
+  const schema: OptionalObjectSchema<{
+    email: RequiredStringSchema<string | undefined, AnyObject>;
+    }, AnyObject, TypeOfShape<{
+    email: RequiredStringSchema<string | undefined, AnyObject>;
+  }>>
+  */
 
   // フォーム送信時の処理
   const onSubmit: SubmitHandler<SampleFormInput> = (data) => {
@@ -90,21 +137,42 @@ export const ReactHookForm = () => {
       <Container maxWidth="sm" sx={{ margin: 'auto', pt: 5 }}>
         <Stack spacing={3}>
           <FormControl>
-            <CustomLabel shrink htmlFor="mailAddress">
-              メールアドレス Label / ? / 任意
+            <CustomLabel shrink htmlFor={id}>
+              {labelTitle}
+              {TooltipTitleIconComponent && (
+                <Tooltip
+                  title={TooltipTitleIconComponent}
+                  arrow
+                  placement="top-start"
+                >
+                  <Button
+                    sx={{
+                      margin: '0 0 .2em 0',
+                      '&.MuiButton-root': {
+                        padding: '6px',
+                        minWidth: 'fit-content',
+                      },
+                    }}
+                  >
+                    <HelpOutlineIcon fontSize="small" />
+                  </Button>
+                </Tooltip>
+              )}
             </CustomLabel>
             <CustomInput
-              id="mailAddress"
-              required
-              type="email"
+              required={required}
+              id={id}
+              type={formType}
               {...register('email')}
               error={'email' in errors}
               helperText={errors.email?.message}
             />
           </FormControl>
 
-          <FormControl>
-            <CustomLabel htmlFor="addName">お名前</CustomLabel>
+          {/* <FormControl>
+            <CustomLabel shrink htmlFor="addName">
+              お名前
+            </CustomLabel>
             <CustomInput
               id="addName"
               required
@@ -113,9 +181,9 @@ export const ReactHookForm = () => {
               error={'name' in errors}
               helperText={errors.name?.message}
             />
-          </FormControl>
+          </FormControl> */}
 
-          <FormControl>
+          {/* <FormControl>
             <CustomLabel shrink htmlFor="addPass">
               パスワード
             </CustomLabel>
@@ -127,7 +195,7 @@ export const ReactHookForm = () => {
               error={'password' in errors}
               helperText={errors.password?.message}
             />
-          </FormControl>
+          </FormControl> */}
 
           <FormControl>
             <Button

@@ -7,7 +7,7 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined'
 import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip'
 
 // import CustomTypo from './CustomTypo'
-import { Stack } from '@mui/material'
+import { Button, Stack, Typography } from '@mui/material'
 
 const longText = `
 Aliquam eget finibus ante, non facilisis lectus. Sed vitae dignissim est, vel aliquam tellus.
@@ -31,7 +31,18 @@ export default function SandBox() {
       <h1>SandBox</h1>
       <Stack spacing={3}>
         <h2>ReactHookForm</h2>
-        <ReactHookForm />
+        <ReactHookForm
+          id="addMail"
+          required
+          formType="addMail"
+          labelTitle="メールアドレス"
+          TooltipTitleIconComponent={
+            <Typography>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem,
+              laboriosam?
+            </Typography>
+          }
+        />
 
         <hr />
         <h2>MUI Form</h2>
@@ -67,13 +78,7 @@ export default function SandBox() {
           helperText="補足ヘルパーです"
           // placement="top-end"
         />
-        <InputForm
-          id="sf2"
-          labelTitle="medium"
-          size="medium"
-          // helperText="ヘルパー"
-        />
-        <InputForm id="sf3" labelTitle="サイズ無指定" helperText="ヘルパー" /> */}
+        */}
         </Box>
       </Stack>
     </div>
