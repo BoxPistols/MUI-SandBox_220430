@@ -1,11 +1,10 @@
 import React from 'react'
 import {
-  alpha,
   Button,
   Container,
   FormControl,
   InputLabel,
-  InputBase,
+  // InputBase,
   Stack,
   styled,
   TextField,
@@ -15,7 +14,6 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 
 type Props = {
-  // formStyle: string
   id?: string
   htmlFor?: string
   inLabelName?: string
@@ -43,46 +41,33 @@ interface SampleFormInput {
 const schema = yup.object({
   email: yup
     .string()
-    .required('必須だよ')
+    .required('必須です')
     .email('正しいメールアドレス入力してね'),
-  name: yup.string().required('必須だよ'),
+  name: yup.string().required('必須です'),
   password: yup
     .string()
-    .required('必須だよ')
-    .min(6, '少ないよ')
+    .required('必須です')
+    .min(6, '6文字以上で入力してください')
     .matches(
-      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&].*$/,
-      'パスワード弱いよ'
+      // /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&].*$/,
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&]).*$/,
+      'パスワードが弱いです。英数字、記号@$!%*#のいずれかを含めてください'
     ),
 })
 
-//  Re Design
-const OriginLabel = styled(InputLabel)(({ theme }) => ({
-  // MuiFormLabel-root-MuiInputLabel-root
-  // '& .MuiFormLabel-root.MuiInputLabel-root': {},
+//  Custom Label
+const CustomLabel = styled(InputLabel)(({ theme }) => ({
   fontSize: '14px',
   position: 'initial',
-  // display: 'flex',
-  // width: 'calc(133% - 24px)', // MUIデフォルトのwidthの合わせる
   textAlign: 'left',
-  // backgroundColor: 'tomato',
   transform: 'none',
-  // color: alpha(theme.palette.text.primary, 0.8),
-  // },
 }))
 
-// const BootstrapInput = styled(TextField)(({ theme }) => ({
-const BootstrapInput = styled(TextField)(({ theme }) => ({
-  'label + &': {
-    marginTop: theme.spacing(0),
+//  Custom Input Form
+const CustomInput = styled(TextField)(({ theme }) => ({
+  '.MuiInputBase-input.MuiOutlinedInput-input': {
+    padding: '0.85em',
   },
-  // '& .MuiFormControl-root': {
-  //   margin: 0,
-  //   padding: 0,
-  // },
-  // '& .MuiInputBase-input': {
-  //   fontSize: 16,
-  // },
 }))
 
 export const ReactHookForm = () => {
@@ -105,33 +90,25 @@ export const ReactHookForm = () => {
       <Container maxWidth="sm" sx={{ margin: 'auto', pt: 5 }}>
         <Stack spacing={3}>
           <FormControl>
-            <OriginLabel shrink htmlFor="exp">
+            <CustomLabel shrink htmlFor="mailAddress">
               メールアドレス Label / ? / 任意
-            </OriginLabel>
-
-            <BootstrapInput
-              id="exp"
+            </CustomLabel>
+            <CustomInput
+              id="mailAddress"
               required
               type="email"
               {...register('email')}
               error={'email' in errors}
               helperText={errors.email?.message}
             />
-
-            {/* <TextField
-              id="exp"
-              required
-              type="email"
-              {...register('email')}
-              error={'email' in errors}
-              helperText={errors.email?.message}
-            /> */}
           </FormControl>
 
           <FormControl>
-            <label>お名前</label>
-            <TextField
+            <CustomLabel htmlFor="addName">お名前</CustomLabel>
+            <CustomInput
+              id="addName"
               required
+              type="name"
               {...register('name')}
               error={'name' in errors}
               helperText={errors.name?.message}
@@ -139,8 +116,11 @@ export const ReactHookForm = () => {
           </FormControl>
 
           <FormControl>
-            <label>パスワード</label>
-            <TextField
+            <CustomLabel shrink htmlFor="addPass">
+              パスワード
+            </CustomLabel>
+            <CustomInput
+              id="addPass"
               required
               type="password"
               {...register('password')}

@@ -67,10 +67,22 @@ export default function ResponsiveDrawer(props: Props) {
         {['All mail', 'Trash', 'Spam'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
+              <Box>
+                <ListItemIcon>
+                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                </ListItemIcon>
+                {/* <ListItemText primary={text} /> */}
+                <Typography
+                  sx={{
+                    fontSize: 12,
+                    whitespace: 'wrap',
+                    lineHeight: 1,
+                    color: 'text.secondary',
+                  }}
+                >
+                  {text}
+                </Typography>
+              </Box>
             </ListItemButton>
           </ListItem>
         ))}
