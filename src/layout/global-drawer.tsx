@@ -16,7 +16,7 @@ import MenuIcon from '@mui/icons-material/Menu'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 
-export const drawerWidth = 180
+export const drawerWidth = 60
 
 interface Props {
   /**
@@ -42,10 +42,22 @@ export default function ResponsiveDrawer(props: Props) {
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
+              <Box>
+                <ListItemIcon>
+                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                </ListItemIcon>
+                {/* <ListItemText primary={text} /> */}
+                <Typography
+                  sx={{
+                    fontSize: 12,
+                    whitespace: 'wrap',
+                    lineHeight: 1,
+                    color: 'text.secondary',
+                  }}
+                >
+                  {text}
+                </Typography>
+              </Box>
             </ListItemButton>
           </ListItem>
         ))}

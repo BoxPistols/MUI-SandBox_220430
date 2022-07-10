@@ -28,9 +28,8 @@ const Top: React.FC = (): JSX.Element => {
         <p>paragraph</p>
         <ResponsiveDrawer />
         <nav>
-          <Link to="form">Typo</Link> /
-          <Link to="custom-form">custom-form</Link> /
-          <Link to="input-form">input-form</Link> /
+          <Link to="form">Typo</Link> /<Link to="custom-form">custom-form</Link>{' '}
+          /<Link to="input-form">input-form</Link> /
           <Link to="sand-box">sand-box</Link>
         </nav>
         {/* </ResponsiveDrawer> */}
