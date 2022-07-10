@@ -1,13 +1,12 @@
 import * as React from 'react'
 import InputForm from 'components/Form/InputForm'
 import { ReactHookForm } from 'components/Form/ReactHookForm'
-import Box from '@mui/material/Box'
+import { Box, Stack, Typography } from '@mui/material'
 // import DraftsIcon from '@mui/icons-material/Drafts'
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined'
-import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip'
+import { CustomTextField2 } from './Form/CustomTextField2'
 
 // import CustomTypo from './CustomTypo'
-import { Button, Stack, Typography } from '@mui/material'
 
 const longText = `
 Aliquam eget finibus ante, non facilisis lectus. Sed vitae dignissim est, vel aliquam tellus.
@@ -24,12 +23,19 @@ export default function SandBox() {
 
   return (
     <div>
-      {/* <Tooltip title={longText} placement="right-start"> */}
-      {/* <Tooltip title={longText} arrow placement="right-start">
-        <p>Default Width [300px]</p>
-      </Tooltip> */}
       <h1>SandBox</h1>
       <Stack spacing={3}>
+        <h2>CustomTextField2</h2>
+        <CustomTextField2
+          labelTitle="ラベルテスト"
+          TooltipTitleIconComponent={
+            <Typography>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem,
+              laboriosam?
+            </Typography>
+          }
+        />
+
         <h2>ReactHookForm</h2>
         <ReactHookForm
           id="addMail"

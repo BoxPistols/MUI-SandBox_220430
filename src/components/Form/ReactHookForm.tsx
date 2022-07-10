@@ -11,9 +11,10 @@ import {
   Stack,
   styled,
   TextField,
+  Tooltip,
 } from '@mui/material'
+
 import { SubmitHandler, useForm } from 'react-hook-form'
-import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 

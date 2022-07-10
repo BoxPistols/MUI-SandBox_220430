@@ -15,6 +15,14 @@ import MailIcon from '@mui/icons-material/Mail'
 import MenuIcon from '@mui/icons-material/Menu'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
+// Nav
+import { Routes, Route, Link } from 'react-router-dom'
+import Form from 'components/Form/Form'
+import CustomForm from 'components/Form/CustomForm'
+import InputForm from 'components/Form/InputForm'
+import SandBox from 'components/SandBox'
+import SandBox2 from 'components/SandBox2'
+import { Stack } from '@mui/material'
 
 export const drawerWidth = 60
 
@@ -94,8 +102,21 @@ export default function ResponsiveDrawer(props: Props) {
     window !== undefined ? () => window().document.body : undefined
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box>
+      <Routes>
+        {
+          <>
+            <Route path="form" element={<Form />} />
+            <Route path="custom-form" element={<CustomForm />} />
+            <Route path="input-form" element={<InputForm />} />
+            <Route path="sand-box" element={<SandBox />} />
+            <Route path="sand-box2" element={<SandBox2 />} />
+          </>
+        }
+      </Routes>
+
       <CssBaseline />
+
       <AppBar
         position="fixed"
         sx={{
@@ -116,8 +137,28 @@ export default function ResponsiveDrawer(props: Props) {
           <Typography variant="h6" noWrap component="div">
             Responsive drawer
           </Typography>
+
+          <nav>
+            <Stack
+              spacing={1}
+              sx={{
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'baseline',
+                gap: 1,
+                padding: 1,
+              }}
+            >
+              <Link to="form">Typo</Link> /
+              <Link to="custom-form">custom-form</Link> /
+              <Link to="input-form">input-form</Link> /
+              <Link to="sand-box">sand-box</Link> /
+              <Link to="sand-box2">sand-box2</Link>
+            </Stack>
+          </nav>
         </Toolbar>
       </AppBar>
+
       <Box
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}

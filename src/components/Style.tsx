@@ -29,21 +29,16 @@ export default function StyleWrap({
       <Container maxWidth="lg">
         <Wrap>
           <Box
-            sx={{
-              margin: 'auto',
-              width: { sm: `calc(100% - ${drawerWidth}px)` },
-              ml: { sm: `${drawerWidth}px` },
-            }}
+          // sx={{
+          //   margin: 'auto',
+          //   width: { sm: `calc(100% - ${drawerWidth}px)` },
+          //   ml: { sm: `${drawerWidth}px` },
+          // }}
           >
             <Grid container spacing={1}>
               <Grid item xs={12}>
                 <Item>{children}</Item>
               </Grid>
-              {/*
-              <Grid item xs={4}>
-                <Item>{rightSide}</Item>
-              </Grid>
-              */}
             </Grid>
           </Box>
         </Wrap>
