@@ -1,35 +1,74 @@
-import { Button } from '@mui/material'
-import React, { BaseSyntheticEvent, FC, ReactNode } from 'react'
+import { Stack, Button, Grid } from '@mui/material'
+import React, { FC } from 'react'
 
 // Types
 type Props = Partial<{
   ButtonTitle: string
-  /** Add Type */
-  color: 'primary' | 'secondary' | 'success'
+  color:
+    | 'inherit'
+    | 'primary'
+    | 'secondary'
+    | 'success'
+    | 'error'
+    | 'info'
+    | 'warning'
   size: 'small' | 'medium' | 'large'
-  variant: any
-  onClick: any
-  // onClick: BaseSyntheticEvent<object, any, any> | undefined
-  // onClick: (event: React.FormEvent<HTMLFormElement>) => void
+  variant: 'contained' | 'outlined' | 'text'
+  event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  onClick: (
+    e?: React.BaseSyntheticEvent<object, any, any> | undefined
+  ) => Promise<void>
+  // cancel
+  CancelButtonTitle: string
+  cancel: boolean
+  CancelSubmit: () => void
 }>
 
 export const FormSubmit: FC<Props> = ({
   ButtonTitle,
-  onClick,
+  event,
   color,
   variant,
   size,
+  // onClick,
+  cancel,
+  CancelButtonTitle,
+  CancelSubmit,
+  ...props
 }) => {
   return (
     <>
-      <Button
-        color={color ? color : 'primary'}
-        variant={variant ? variant : 'contained'}
-        size={size}
-        onClick={onClick}
+      <Stack
+        sx={{
+          mt: 3,
+          display: 'grid',
+          justifyContent: 'flex-end',
+          gridTemplateColumns:
+            'repeat(auto-fit, minmax(min(240px, 320px), 320px))',
+          gap: '1rem',
+        }}
       >
-        {ButtonTitle ? ButtonTitle : '保存'}
-      </Button>
+        {/* <Grid container spacing={3}> */}
+        {cancel && (
+          // <Grid item md={6}>
+          <Button onClick={CancelSubmit} variant="outlined">
+            {CancelButtonTitle ? CancelButtonTitle : 'キャンセル'}
+          </Button>
+          // </Grid>
+        )}
+        {/* <Grid item md={6}> */}
+        <Button
+          color={color ? color : 'primary'}
+          variant={variant ? variant : 'contained'}
+          size={size}
+          onClick={() => event}
+          {...props}
+        >
+          {ButtonTitle ? ButtonTitle : '保存'}
+        </Button>
+        {/* </Grid> */}
+        {/* </Grid> */}
+      </Stack>
     </>
   )
 }

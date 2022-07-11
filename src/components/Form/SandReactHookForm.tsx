@@ -75,6 +75,7 @@ export const SandReactHookForm: FC = ({}) => {
               error={'email' in errors}
               helperText={errors.email?.message}
               {...register('email')}
+              defaultValue="aaa@aaa.com"
             />
           </FormControl>
 
@@ -84,7 +85,6 @@ export const SandReactHookForm: FC = ({}) => {
               labelTitle="おなまえ"
               TooltipTitleIconComponent="Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem laboriosam?"
             />
-
             <TextField
               id="name"
               placeholder="入力してください"
@@ -93,6 +93,7 @@ export const SandReactHookForm: FC = ({}) => {
               error={'name' in errors}
               helperText={errors.name?.message}
               {...register('name')}
+              defaultValue="佐藤太郎"
             />
           </FormControl>
 
@@ -111,21 +112,19 @@ export const SandReactHookForm: FC = ({}) => {
               error={'password' in errors}
               helperText={errors.password?.message}
               {...register('password')}
+              defaultValue="ABCDEFG!000"
             />
           </FormControl>
 
-          <FormSubmit onClick={handleSubmit(onSubmit)} />
-
-          {/* <FormControl>
-            <Button
-              color="primary"
-              variant="contained"
-              size="large"
+          <FormControl>
+            <FormSubmit
               onClick={handleSubmit(onSubmit)}
-            >
-              作成
-            </Button>
-          </FormControl> */}
+              ButtonTitle="登録"
+              // has cancel button
+              // cancel
+              // CancelSubmit={() => console.log('cancel test')}
+            />
+          </FormControl>
         </Stack>
         {/* </Box> */}
       </Container>
