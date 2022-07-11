@@ -1,11 +1,19 @@
-import React, { ElementType, FC, ReactNode, useState } from 'react'
-
-import { CustomTextField2 } from 'components/Form/CustomTextField2'
+import React, { ElementType, FC, ReactNode } from 'react'
 
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
-import { FormControl, Button, Container, Box, Stack } from '@mui/material'
+
+import {
+  FormControl,
+  Button,
+  Container,
+  Box,
+  Stack,
+  TextField,
+} from '@mui/material'
+import { CustomLabel } from './CustomLabel'
+import { FormSubmit } from './FormSubmit'
 
 // バリデーションルール
 const schema = yup.object({
@@ -40,12 +48,6 @@ export const SandReactHookForm: FC = ({}) => {
     resolver: yupResolver(schema),
   })
 
-  // const [name, setName] = useState('useState Value')
-  // const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setName(event.target.value)
-  // }
-  // console.log(name)
-
   // フォーム送信時の処理
   const onSubmit: SubmitHandler<SampleFormInput> = (data) => {
     // バリデーションチェックOK！なときに行う処理を追加
@@ -58,18 +60,17 @@ export const SandReactHookForm: FC = ({}) => {
       <Container sx={{ margin: 'auto', pt: 5, maxWidth: 500 }}>
         {/* <Box sx={{ width: '100%', display: 'flex' }}> */}
         <Stack spacing={3}>
-          <FormControl>
-            <CustomTextField2
-              id="テスト"
-              labelTitle="メール入力"
-              // onChangeValue={handleChange}
-              // value={name}
-              placeholder="入力してください"
+          <FormControl required>
+            <CustomLabel
+              labelTitle="メールアドレス"
+              id="test"
               TooltipTitleIconComponent="Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem laboriosam?"
-              // size="small"
-              // RHF
-              // required
-              formType="email"
+            />
+
+            <TextField
+              id="test"
+              placeholder="入力してください"
+              type="email"
               // RHF
               error={'email' in errors}
               helperText={errors.email?.message}
@@ -77,7 +78,45 @@ export const SandReactHookForm: FC = ({}) => {
             />
           </FormControl>
 
-          <FormControl>
+          <FormControl required>
+            <CustomLabel
+              id="name"
+              labelTitle="おなまえ"
+              TooltipTitleIconComponent="Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem laboriosam?"
+            />
+
+            <TextField
+              id="name"
+              placeholder="入力してください"
+              type="text"
+              // RHF
+              error={'name' in errors}
+              helperText={errors.name?.message}
+              {...register('name')}
+            />
+          </FormControl>
+
+          <FormControl required>
+            <CustomLabel
+              id="password"
+              labelTitle="パスワード"
+              TooltipTitleIconComponent="Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem laboriosam?"
+            />
+
+            <TextField
+              id="password"
+              placeholder="入力してください"
+              type="password"
+              // RHF
+              error={'password' in errors}
+              helperText={errors.password?.message}
+              {...register('password')}
+            />
+          </FormControl>
+
+          <FormSubmit onClick={handleSubmit(onSubmit)} />
+
+          {/* <FormControl>
             <Button
               color="primary"
               variant="contained"
@@ -86,7 +125,7 @@ export const SandReactHookForm: FC = ({}) => {
             >
               作成
             </Button>
-          </FormControl>
+          </FormControl> */}
         </Stack>
         {/* </Box> */}
       </Container>
