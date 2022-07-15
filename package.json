@@ -1,4 +1,19 @@
 {
+  "main": "index.tsx",
+  "name": "mui-sandbox",
+  "homepage": "https://BoxPistols.github.io/MUI-SandBox_220430/",
+  "description": "https://github.com/mui/material-ui/blob/v5.6.3/docs/data/material/components/typography/TypographyTheme.tsx",
+  "devDependencies": {
+    "react-scripts": "latest"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "rm": "rm -rf docs",
+    "mv": "mv build docs",
+    "git": "git add . && git commit && git push origin master",
+    "deploy": "npm run rm && npm run build && npm run mv && npm run git"
+  },
+  "title": "MUI SandBox",
   "dependencies": {
     "@emotion/react": "latest",
     "@emotion/styled": "latest",
@@ -14,16 +29,6 @@
     "typescript": "latest",
     "yup": "^0.32.11"
   },
-  "description": "https://github.com/mui/material-ui/blob/v5.6.3/docs/data/material/components/typography/TypographyTheme.tsx",
-  "devDependencies": {
-    "react-scripts": "latest"
-  },
-  "main": "index.tsx",
-  "name": "mui-sandbox",
-  "scripts": {
-    "start": "react-scripts start"
-  },
-  "title": "MUI SandBox",
   "browserslist": {
     "production": [
       ">0.2%",
