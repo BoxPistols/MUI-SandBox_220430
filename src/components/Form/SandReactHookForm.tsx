@@ -13,7 +13,7 @@ import {
   TextField,
 } from '@mui/material'
 import { CustomLabel } from './CustomLabel'
-import { FormSubmit } from './FormSubmit'
+import { FormButton } from '../Button/FormButton'
 
 // バリデーションルール
 const schema = yup.object({
@@ -117,12 +117,12 @@ export const SandReactHookForm: FC = ({}) => {
           </FormControl>
 
           <FormControl>
-            <FormSubmit
+            <FormButton
               onClick={handleSubmit(onSubmit)}
               ButtonTitle="登録"
               // has cancel button
-              // cancel
-              // CancelSubmit={() => console.log('cancel test')}
+              cancel
+              CancelSubmit={() => console.log('cancel test')}
             />
           </FormControl>
         </Stack>

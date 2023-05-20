@@ -1,6 +1,7 @@
+// export const FormButton = () => {
 import { Stack, Button, Grid } from '@mui/material'
 import React, { FC } from 'react'
-
+import { ButtonGroup } from './ButtonGroup'
 // Types
 type Props = Partial<{
   ButtonTitle: string
@@ -24,7 +25,7 @@ type Props = Partial<{
   CancelSubmit: () => void
 }>
 
-export const FormSubmit: FC<Props> = ({
+export const FormButton: FC<Props> = ({
   ButtonTitle,
   event,
   color,
@@ -38,25 +39,12 @@ export const FormSubmit: FC<Props> = ({
 }) => {
   return (
     <>
-      <Stack
-        sx={{
-          mt: 3,
-          display: 'grid',
-          justifyContent: 'flex-end',
-          gridTemplateColumns:
-            'repeat(auto-fit, minmax(min(240px, 320px), 320px))',
-          gap: '1rem',
-        }}
-      >
-        {/* <Grid container spacing={3}> */}
+      <ButtonGroup>
         {cancel && (
-          // <Grid item md={6}>
           <Button onClick={CancelSubmit} variant="outlined">
             {CancelButtonTitle ? CancelButtonTitle : 'キャンセル'}
           </Button>
-          // </Grid>
         )}
-        {/* <Grid item md={6}> */}
         <Button
           color={color ? color : 'primary'}
           variant={variant ? variant : 'contained'}
@@ -66,9 +54,7 @@ export const FormSubmit: FC<Props> = ({
         >
           {ButtonTitle ? ButtonTitle : '保存'}
         </Button>
-        {/* </Grid> */}
-        {/* </Grid> */}
-      </Stack>
+      </ButtonGroup>
     </>
   )
 }

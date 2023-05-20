@@ -1,10 +1,10 @@
 import React from 'react';
 
-export const Submit = () => {
+export const DialogBase = () => {
   return (
     <>
       <section>
-        <h2>Submit</h2>
+        <h2>DialogBase</h2>
         <p>paragraph</p>
       </section>
     </>
